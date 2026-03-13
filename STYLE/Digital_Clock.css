@@ -1,67 +1,169 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto+Mono:wght@400;600&display=swap');
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-      margin: 0;
-      height: 100vh;
-
-      background-image: url("/PROJACT/IMG/JavaScript\ Fundamentals\ Mini\ Apps\ bg.png");
-      background-size: cover;      
-      background-position: center; 
-      background-repeat: no-repeat;
-    }
-.navbar{
-      background-color: rgb(32, 31, 31);
-    height: 80px;
-   
+    min-height: 100vh;
+    background-image: url("../IMG/JavaScript Fundamentals Mini Apps bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #1a1a1a;
+    overflow-x: hidden;
 }
 
-p{
-   color: white;
+/* ══ NAVBAR ══ */
+nav.navbar {
+    background-color: rgb(32, 31, 31) !important;
+    height: 80px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 32px !important;
+    flex-wrap: nowrap !important;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav.navbar p {
+    color: white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    margin-left: 40px;
     font-size: 40px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
 }
-p::first-letter{
+
+nav.navbar p::first-letter {
     color: chartreuse;
-    font-size: 45px;
 }
 
+.logo {
+    width: 60px;
+    vertical-align: middle;
+}
 
-.back{
-
-    margin-right: 50px;
-   width: 50px;
+.back {
+    width: 50px;
     transition: 0.3s;
     cursor: pointer;
-}
-.back:hover{
- transform: scale(1.08);
-}
-.logo{
-    width: 70px;
+    display: block;
+    flex-shrink: 0;
 }
 
-.clock_frame{
+.back:hover {
+    transform: scale(1.08);
+}
 
-    width: 1020px;
-    margin-left: 300px;
-    top: 160px;
+/* ══ CLOCK WRAP ══ */
+.clock_wrap {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock_frame {
+    width: min(1020px, 90vw);
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Clock text sits centered over the frame image */
+.box {
     position: absolute;
-  
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    pointer-events: none;
 }
-
-.box{
-position: relative;
- margin-left: 580px;
- margin-top: 250px;
-}
-
 
 #clock {
-  font-family: 'Bitcount Single', monospace;
-  font-size: 54px;
-  letter-spacing: 20px;
-  color: #fff;
- 
+    font-family: 'Bitcount Single', monospace;
+    font-size: clamp(28px, 5vw, 54px);
+    letter-spacing: clamp(4px, 1.5vw, 20px);
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+                 0 0 40px rgba(0, 200, 255, 0.4);
+    white-space: nowrap;
+}
+
+/* ══ TABLET ══ */
+@media (max-width: 900px) {
+    nav.navbar {
+        height: 66px !important;
+        padding: 0 20px !important;
+    }
+
+    nav.navbar p {
+        font-size: 30px;
+    }
+
+    .logo {
+        width: 46px;
+    }
+
+    .back {
+        width: 40px;
+    }
+
+    .clock_wrap {
+        min-height: calc(100vh - 66px);
+    }
+}
+
+/* ══ MOBILE ══ */
+@media (max-width: 600px) {
+    nav.navbar {
+        height: 60px !important;
+        padding: 0 14px !important;
+    }
+
+    nav.navbar p {
+        font-size: 22px;
+    }
+
+    .logo {
+        width: 32px;
+    }
+
+    .back {
+        width: 32px;
+    }
+
+    .clock_wrap {
+        min-height: calc(100vh - 60px);
+        padding: 20px 0;
+    }
+
+    .clock_frame {
+        width: 95vw;
+    }
+
+    #clock {
+        font-size: clamp(20px, 7vw, 34px);
+        letter-spacing: clamp(2px, 1vw, 8px);
+    }
+}
+
+@media (max-width: 380px) {
+    nav.navbar p {
+        font-size: 18px;
+    }
+
+    #clock {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
 }
