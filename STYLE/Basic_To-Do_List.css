@@ -1,71 +1,251 @@
- body {
-      margin: 0;
-      height: 100vh;
-
-      background-image: url("/PROJACT/IMG/JavaScript\ Fundamentals\ Mini\ Apps\ bg.png");
-      background-size: cover;      /* image full screen fill */
-      background-position: center; /* center align */
-      background-repeat: no-repeat;/* repeat aagadhu */
-    }
-.navbar{
-      background-color: rgb(32, 31, 31);
-    height: 80px;
-   
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.back{
-
-    margin-right: 50px;
-   width: 50px;
-    transition: 0.3s;
-    cursor: pointer;
+body {
+    min-height: 100vh;
+    background-image: url("../IMG/JavaScript Fundamentals Mini Apps bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #e8f0e0;
+    overflow-x: hidden;
 }
-.back:hover{
- transform: scale(1.08);
+
+/* ══ NAVBAR ══ */
+nav.navbar {
+    background-color: rgb(32, 31, 31) !important;
+    height: 80px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 32px !important;
+    flex-wrap: nowrap !important;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-p{
+nav.navbar p {
     color: white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    margin-left: 35px;
     font-size: 40px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
 }
-p::first-letter{
+
+nav.navbar p::first-letter {
     color: chartreuse;
     font-size: 45px;
 }
-.do{
+
+.do {
     width: 60px;
+    vertical-align: middle;
 }
-.main{
+
+.back {
+    width: 50px;
+    transition: 0.3s;
+    cursor: pointer;
+    display: block;
+    flex-shrink: 0;
+}
+
+.back:hover {
+    transform: scale(1.08);
+}
+
+/* ══ INPUT AREA ══ */
+.main {
     text-align: center;
     margin-top: 30px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
-#task_input{
+
+#task_input {
     border-radius: 30px;
     width: 360px;
-    padding: 30px;
+    max-width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    outline: none;
+    transition: border-color 0.2s;
 }
-#add_task_button{
+
+#task_input:focus {
+    border-color: rgb(97, 138, 59);
+}
+
+#add_task_button {
     width: 90px;
+    padding: 14px 0;
     border-radius: 25px;
     font-weight: bolder;
+    font-size: 1rem;
     background-color: rgb(97, 138, 59);
     color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
 }
-.task_body{
 
-    margin-left: 550px;
-    margin-right: 500px;
-    
-    margin-top: 60px;
+#add_task_button:hover {
+    background-color: rgb(75, 110, 40);
+    transform: scale(1.05);
+}
+
+/* ══ TASK LIST ══ */
+.task_body {
+    max-width: 600px;
+    width: 90%;
+    margin: 40px auto 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 45px;
-    
-     color: rgb(46, 62, 29);
+    color: rgb(46, 62, 29);
 }
 
-#task_output{
+#task_output {
     list-style: none;
-     font-size: 25px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 25px;
+}
+
+/* Each task item */
+#task_output li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 14px;
+    padding: 12px 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    word-break: break-word;
+    gap: 10px;
+}
+
+#task_output li span {
+    flex: 1;
+    cursor: pointer;
+}
+
+#task_output li button {
+    background: #e84545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+#task_output li button:hover {
+    background: #c02020;
+}
+
+#task_output li.done span {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* ══ TABLET ══ */
+@media (max-width: 900px) {
+    nav.navbar {
+        height: 66px !important;
+        padding: 0 20px !important;
+    }
+
+    nav.navbar p {
+        font-size: 30px;
+    }
+
+    nav.navbar p::first-letter {
+        font-size: 35px;
+    }
+
+    .do  { width: 44px; }
+    .back { width: 40px; }
+}
+
+/* ══ MOBILE ══ */
+@media (max-width: 600px) {
+    nav.navbar {
+        height: 60px !important;
+        padding: 0 14px !important;
+    }
+
+    nav.navbar p {
+        font-size: 22px;
+    }
+
+    nav.navbar p::first-letter {
+        font-size: 26px;
+    }
+
+    .do  { width: 32px; }
+    .back { width: 32px; }
+
+    .main {
+        margin-top: 20px;
+        gap: 8px;
+    }
+
+    #task_input {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+
+    #add_task_button {
+        width: 76px;
+        padding: 12px 0;
+        font-size: 0.9rem;
+    }
+
+    .task_body {
+        width: 95%;
+        margin-top: 24px;
+    }
+
+    #task_output {
+        font-size: 18px;
+    }
+
+    #task_output li {
+        padding: 10px 14px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    nav.navbar p {
+        font-size: 17px;
+    }
+
+    #task_input {
+        max-width: 230px;
+        font-size: 0.88rem;
+    }
+
+    #task_output {
+        font-size: 16px;
+    }
 }
