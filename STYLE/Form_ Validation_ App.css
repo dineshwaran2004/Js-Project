@@ -1,152 +1,317 @@
- body {
-     margin: 0;
-     height: 100vh;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-     background-image: url("/PROJACT/IMG/JavaScript\ Fundamentals\ Mini\ Apps\ bg.png");
-     background-size: cover;
-     background-position: center;
-     background-repeat: no-repeat;
- }
+body {
+    min-height: 100vh;
+    background-image: url("../IMG/JavaScript Fundamentals Mini Apps bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f0f0f0;
+}
 
- .navbar {
-     background-color: rgb(32, 31, 31);
-     height: 80px;
+/* ══ NAVBAR ══ */
+nav.navbar {
+    background-color: rgb(32, 31, 31) !important;
+    height: 80px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 32px !important;
+    flex-wrap: nowrap !important;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
- }
+.title {
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
 
- .back {
-     margin-right: 230px;
- }
+.title::first-letter {
+    color: chartreuse;
+}
 
- .title {
-     color: white;
-     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-     margin-left: 40px;
-     font-size: 40px;
- }
+.logo {
+    width: 40px;
+}
 
- .title::first-letter {
-     color: chartreuse;
- }
+.back {
+    width: 50px;
+    transition: 0.3s;
+    cursor: pointer;
+    display: block;
+    flex-shrink: 0;
+}
 
- .form_div {
-     width: 380px;
-     height: 560px;
-     margin-left: 160px;
-     margin-top: 50px;
-     background-color: white;
-     padding: 20px;
-     border-radius: 50px;
-     box-shadow: 0 0 10px rgb(0, 0, 0);
-     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
- }
+.back:hover {
+    transform: scale(1.08);
+}
 
- .data_table {
+/* ══ MAIN LAYOUT ══ */
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px 40px;
+    min-height: calc(100vh - 80px);
+    flex-wrap: wrap;
+}
 
-     margin-left: 750px;
-     margin-top: -570px;
+/* ══ FORM ══ */
+.form_div {
+    width: 380px;
+    flex-shrink: 0;
+    background-color: white;
+    padding: 24px 28px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
- }
+.form_div label {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 4px;
+    margin-top: 12px;
+}
 
- p {
-     color: black;
- }
+.form_div label:first-child {
+    margin-top: 0;
+}
 
- .back {
+.form_div input[type="text"],
+.form_div input[type="number"],
+.form_div input[type="email"] {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-family: inherit;
+}
 
-     margin-right: 50px;
-     width: 50px;
-     transition: 0.3s;
-     cursor: pointer;
- }
+.form_div input[type="file"] {
+    width: 100%;
+    margin: 8px 0 4px;
+    font-size: 0.85rem;
+}
 
- .back:hover {
-     transform: scale(1.08);
- }
+.form_div button {
+    margin-top: 18px;
+    padding: 8px 24px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1rem;
+    border: 2px solid #333;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
 
- .logo {
-     width: 40px;
- }
+.form_div button:hover {
+    background: #333;
+    color: white;
+}
 
- #name_output,
- #age_output,
- #phoneNumber_output,
- #email_output,
- #Organization_output {
-     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-     color: rgb(163, 59, 7);
+/* ══ ID CARDS AREA ══ */
+.data_table {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
+    flex-shrink: 0;
+}
 
- }
+/* ── FRONT CARD ── */
+.card-front-wrap {
+    position: relative;   /* ALL absolute children anchor here */
+    display: inline-block;
+    flex-shrink: 0;
+    width: 320px;
+}
 
- #name_output {
-     position: absolute;
-     left: 720px;
-     top: 375px;
-      font-size: 25px;
-      color: black;
+.idcard {
+    width: 100%;
+    display: block;
+}
 
- }
- #name_output::first-letter{
+/* Photo — top center of card */
+#photoPreview {
+    position: absolute;
+    width: 46%;
+    height: 32%;
+    top: 7%;
+    left: 27%;
+    object-fit: cover;
+    border: 2px solid black;
+    display: block;
+}
+
+#name_output {
+    position: absolute;
+    top: 40%;
+    left: 26%;
+    font-size: 25px;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 90%;
+    text-overflow: ellipsis;
+}
+
+#name_output::first-letter {
     color: dodgerblue;
- }
+}
 
 #age_output {
-     position: absolute;
-     left: 760px;
-     top: 465px;
-      font-size: 14px;
-      color: black;
- }
-#phoneNumber_output{
-     position: absolute;
-    left: 760px;
-     top: 490px;
-    font-size: 14px;
-    color: black;
- }
-
-#email_output{
     position: absolute;
-       left: 760px;
-     top: 515px;
-    font-size: 14px;
+    top: 53%;
+    left: 20%;
+    font-size: 17px;
     color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    white-space: nowrap;
 }
-#Organization_output{
+
+
+#phoneNumber_output {
     position: absolute;
-      left: 1070px;
-     top: 170px;
-     font-size: 48px;
-     color: orange;
-}
-#Organization_output::first-letter{
+    top: 59%;
+    left: 20%;
+    font-size: 17px;
     color: black;
-    font-size:65px ;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    white-space: nowrap;
 }
- #photoPreview {
-     width: 150px;
-     height: 180px;
-     border: 2px solid black;
-     position: absolute;
-     left: 725px;
-     top: 180px;
- }
 
- .img_body {
-     margin-left: 290px;
- }
+#email_output {
+    position: absolute;
+    top: 65%;
+    left: 20%;
+    font-size: 20px;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 74%;
+    text-overflow: ellipsis;
+}
 
- .name {
-     margin-top: -160px;
-     
- }
+.card-back-wrap {
+    position: relative;   
+    display: inline-block;
+    flex-shrink: 0;
+    width: 320px;
+}
 
- .idcard {
-      margin-left: -400px;
-     width: 320px;
+.idcard_back {
+    width: 100%;
+    display: block;
+}
 
- }
-.idcard_back{
-     margin-left: 50px;
-     width: 320px;
+#Organization_output {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    font-size: 1.6em;
+    color: orange;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    word-break: break-word;
+}
+
+#Organization_output::first-letter {
+    color: black;
+    font-size: 2em;
+}
+
+@media (max-width: 1100px) {
+    .data_table       { gap: 24px; }
+    .card-front-wrap,
+    .card-back-wrap   { width: 260px; }
+}
+
+@media (max-width: 768px) {
+    nav.navbar {
+        height: 64px !important;
+        padding: 0 16px !important;
+    }
+
+    .title      { font-size: 32px; }
+    .logo       { width: 28px; }
+    .back       { width: 36px; }
+
+    main {
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 16px 40px;
+        gap: 30px;
+    }
+
+    .form_div {
+        width: 100%;
+        max-width: 420px;
+        border-radius: 28px;
+        padding: 20px;
+    }
+
+    .data_table {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+    }
+
+
+    .card-front-wrap,
+    .card-back-wrap {
+        width: min(340px, 90vw);
+    }
+
+    #name_output        { font-size: 2em; margin-left: -15px;}
+    #age_output,
+    #phoneNumber_output,
+    #email_output       { font-size: 1em; }
+
+    #Organization_output {
+        font-size: 1.2em;
+        top: 4%;
+    }
+
+    #Organization_output::first-letter {
+        font-size: 1.6em;
+    }
+}
+
+@media (max-width: 400px) {
+    .title { font-size: 18px; }
+
+    .form_div {
+        border-radius: 20px;
+        padding: 16px;
+    }
+
+    .card-front-wrap,
+    .card-back-wrap {
+        width: 95vw;
+    }
+
+    #name_output        { font-size: 0.9em; }
+    #age_output,
+    #phoneNumber_output,
+    #email_output       { font-size: 0.65em; }
 }
