@@ -1,88 +1,197 @@
- body {
-      margin: 0;
-      height: 100vh;
+/* ══════════════════════════════════════
+   ORIGINAL STYLES — untouched
+══════════════════════════════════════ */
 
-      background-image: url("/PROJACT/IMG/JavaScript\ Fundamentals\ Mini\ Apps\ bg.png");
-      background-size: cover;      
-      background-position: center; 
-      background-repeat: no-repeat;
-    }
-.navbar{
-      background-color: rgb(32, 31, 31);
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("../IMG/JavaScript Fundamentals Mini Apps bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar {
+    background-color: rgb(32, 31, 31);
     height: 80px;
-   
+    width: 100%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 !important;
+    flex-wrap: nowrap !important;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-
-.frame-box {
-  position: relative;     
-  width: 900px;
-  margin: 50px auto;
-}
-
-.frame {
-  width: 100%;
-  display: block;
-}
-
-
-.back{
-
+.back {
     margin-right: 50px;
-   width: 50px;
+    width: 50px;
     transition: 0.3s;
     cursor: pointer;
+    flex-shrink: 0;
 }
-.back:hover{
- transform: scale(1.08);
+
+.back:hover {
+    transform: scale(1.08);
 }
+
+.heading {
+    color: aliceblue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 5px;
+    margin-left: 26px;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.heading::first-letter {
+    color: chartreuse;
+    font-size: 35px;
+}
+
+.logo {
+    width: 80px;
+}
+
+.frame_container {
+    position: relative;   
+    width: 1000px;        
+    margin: 30px auto 0;
+}
+
 .frame {
-  width: 1000px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  position: relative;
+    width: 100%;          
+    height: auto;
+    display: block;
 }
 
-.output_quoet{
 
- margin-left: 550px;
- margin-top: 280px;
-  position: absolute;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 25px;
-  background-color: gold;
+.output_quoet {
+    position: absolute;
+    top: 42%;             
+    left: 33%;            
+    right: 33%;           
+    transform: translateY(-50%);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+    background-color: gold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-align: center;
 }
-#Quote_button{
-   position: absolute;
-   top: 610px;
-  margin-left: 780px;
-  width: 130px;
-  height: 60px;
-  border-radius: 30px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bolder;
-  color: rgb(0, 0, 0);
-  background-color: chartreuse;
-  transition: 0.8s;
 
+.output_quoet p {
+    margin: 0;
+    padding: 0;
+    word-break: break-word;
+    line-height: 1.4;
 }
-#Quote_button:hover{
+
+/* BUTTON — positioned % inside container */
+#Quote_button {
+    position: absolute;
+    top: 83%;             /* sits in the dark bottom strip of frame */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 60px;
+    border-radius: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    background-color: chartreuse;
+    transition: 0.8s;
+    border: none;
+    cursor: pointer;
+}
+
+#Quote_button:hover {
     background-color: black;
     color: white;
 }
 
-.heading{
-  color: aliceblue;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin-top: 5px;
-  margin-left: 26px;
-  font-size: 26px;
+
+
+@media (max-width: 1200px) {
+    .frame_container {
+        width: 88vw;
+    }
+
+    .output_quoet {
+        font-size: clamp(13px, 2.4vw, 22px);
+    }
+
+    #Quote_button {
+        width: 120px;
+        height: 54px;
+    }
 }
-.heading::first-letter{
-  color: chartreuse;
-  font-size: 35px;
+
+
+@media (max-width: 1268px) {
+    .navbar {
+        height: 64px !important;
+    }
+
+    .heading {
+        font-size: 18px;
+        margin-left: 14px;
+    }
+
+    .heading::first-letter { font-size: 22px; }
+    .logo  { width: 44px; }
+    .back  { width: 34px; margin-right: 14px; }
+
+    .frame_container {
+        width: 94vw;
+        margin-top: 16px;
+    }
+
+    .output_quoet {
+        font-size: clamp(11px, 3.2vw, 17px);
+        padding: 6px 10px;
+    }
+
+    #Quote_button {
+        width: 110px;
+        height: 50px;
+        font-size: 0.9rem;
+    }
 }
-.logo{
-  width: 80px;
+
+@media (max-width: 1520px) {
+    .navbar { height: 56px !important; }
+
+    .heading {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+
+    .heading::first-letter { font-size: 18px; }
+    .logo  { width: 28px; }
+    .back  { width: 26px; margin-right: 10px; }
+
+    .frame_container {
+        width: 97vw;
+        margin-top: 12px;
+    }
+
+    .output_quoet {
+        font-size: clamp(10px, 3.6vw, 14px);
+        padding: 5px 8px;
+    }
+
+    #Quote_button {
+        width: 96px;
+        height: 42px;
+        font-size: 0.82rem;
+    }
 }
