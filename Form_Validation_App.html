@@ -1,56 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic ID Card</title>
-    <link rel="stylesheet" href="STYLE/Form_ Validation_ App.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="STYLE/Form_ Validation_ App.css"
 </head>
-
 <body>
+
+    <!-- ══ NAVBAR ══ -->
     <nav class="navbar">
-        <p class="title">Basic ID Card <span><img class="logo" src="IMG/form.png" alt=""></span></p>
-        <a href="index.html"> <img class="back" src="IMG/back.png" alt=""> </a>
-        <main>
-            <div class="form_div">
-                <form action="">
-                    <label for="Name">name</label></i><br>
-                    <input id="name_input" type="text" placeholder="name"><br><br>
-                    <input type="file" id="photoInput" accept="image/*">
-                    <br><br>
-                    <label for="Age">Age</label><br>
-                    <input id="age_input" type="number" placeholder="Enter The Age" required><br><br>
-                    <label for="phoneNumber">phoneNumber</label><br>
-                    <input id="phoneNumber_input" type="text" placeholder="Enter the number required"><br><br>
-                    <label for="email"> Roll</label><br>
-                    <input id="email_input" type="email" placeholder="Enter the Roll " required><br><br>
-                    <label for="Grade">Organization Name</label><br>
-                    <input id="Organization_Name" type="text" placeholder="Enter the mark"><br><br>
+        <p class="title">
+            Basic ID Card <span><img class="logo" src="IMG/form.png" alt=""></span>
+        </p>
+        <a href="index.html">
+            <img class="back" src="IMG/back.png" alt="Back">
+        </a>
+    </nav>
 
-                    <button type="button" id="button">Submit</button>
+    <!-- ══ MAIN ══ -->
+    <main>
 
-                </form>
+        <!-- Form -->
+        <div class="form_div">
+            <form action="">
+                <label for="name_input">name</label>
+                <input id="name_input" type="text" placeholder="name">
 
+                <label>Photo</label>
+                <input type="file" id="photoInput" accept="image/*">
+
+                <label for="age_input">Age</label>
+                <input id="age_input" type="number" placeholder="Enter The Age" required>
+
+                <label for="phoneNumber_input">phoneNumber</label>
+                <input id="phoneNumber_input" type="text" placeholder="Enter the number required">
+
+                <label for="email_input">Roll</label>
+                <input id="email_input" type="email" placeholder="Enter the Roll" required>
+
+                <label for="Organization_Name">Organization Name</label>
+                <input id="Organization_Name" type="text" placeholder="Enter the Organization">
+
+                <button type="button" id="button">Submit</button>
+            </form>
+        </div>
+
+        <!-- ID Cards -->
+        <div class="data_table">
+
+            <!-- Front card -->
+            <div class="card-front-wrap">
+                <img class="idcard" src="IMG/id card template.png" alt="ID Card Front">
+                <img id="photoPreview" alt="Photo Preview">
+                <span id="name_output"></span>
+                <span id="age_output"></span>
+                <span id="phoneNumber_output"></span>
+                <span id="email_output"></span>
             </div>
-            <div class="data_table">
-               
-               <span class="img_body"><img id="photoPreview"  ></span> 
-               <span> <img  class="idcard" src="IMG/id card template.png" alt=""></span>
-                <span> <img  class="idcard_back" src="IMG/Blue Simple Corporate ID Card back.png" alt=""></span>
-                <p  class="name">  <span id="name_output"></span></p>
-                <p> <span id="age_output"></span> </p>
-                <p> <span id="phoneNumber_output"></span></p>
-                <p>  <span id="email_output"></span></p>
-                <p>  <span id="Organization_output"></span></p>
 
+            <!-- Back card -->
+            <div class="card-back-wrap">
+                <img class="idcard_back" src="IMG/Blue Simple Corporate ID Card back.png" alt="ID Card Back">
+                <span id="Organization_output"></span>
             </div>
-        </main>
-        <script src="JAVASCRIPT/Form_Validation_App.js">
 
-        </script>
+        </div>
+    </main>
+
+    <script src="JAVASCRIPT/Form_Validation_App.js"></script>
+
 </body>
-
 </html>
